@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book detail</title>
+</head>
+<body>
+<form th:action="@{/book/create}" th:method="post" th:object="${bookDetails}">
+    <div class="container">
+        <label><b>Name</b></label>
+        <input type="text" th:field="*{name}">
+        <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span></br>
+
+        <label><b>Author</b></label>
+        <input type="text"  th:field="*{author}">
+        <span class="error" th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></span></br>
+
+        <label><b>Genre</b></label>
+        <input type="text"  th:field="*{genre}">
+        <span class="error" th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></span></br>
+
+        <label><b>Publisher</b></label>
+        <select type="text"  th:field="*{publisherCatalogs}" th:each="publisherCatalogs : ${publisherCatalogs}">
+            <option th:value="${publisherCatalogs.id}" th:text="${publisherCatalogs.name}"></option>
+        </select>
+        <span class="error" th:if="${#fields.hasErrors('publisherCatalog')}" th:errors="*{publisherCatalogs}"></span></br>
+
+        <button type="submit">Create</button>
+        <button type="reset">Cancel</button>
+    </div>
+</form>
+</body>
+</html>

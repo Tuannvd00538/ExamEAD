@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Publisher Catalogs</title>
+</head>
+<body>
+<form th:action="@{/publisher/create}" th:method="post" th:object="${publisherCatalogs}">
+    <div class="container">
+        <label><b>Name</b></label>
+        <input type="text" th:field="*{name}">
+        <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span></br>
+
+        <label><b>Address</b></label>
+        <input type="text"  th:field="*{address}">
+        <span class="error" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span></br>
+
+        <label><b>Contact Person</b></label>
+        <input type="text"  th:field="*{contactPerson}">
+        <span class="error" th:if="${#fields.hasErrors('contactPerson')}" th:errors="*{contactPerson}"></span></br>
+
+        <label><b>Phone</b></label>
+        <input type="text"  th:field="*{phoneNumber}">
+        <span class="error" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span></br>
+
+        <button type="submit">Create</button>
+        <button type="reset">Cancel</button>
+    </div>
+</form>
+</body>
+</html>
